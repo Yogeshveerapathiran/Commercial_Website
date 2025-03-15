@@ -53,6 +53,7 @@ Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
 ```index
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -68,8 +69,7 @@ Upload to GitHub Pages for free hosting.
           <li><a onclick="showSection('products')">Products</a></li>
           <li><a onclick="showSection('about')">About Us</a></li>
           <li><a onclick="showSection('contact')">Contact</a></li>
-          <li><a onclick="openModal('login-modal')">Login</a></li>
-          <li><a onclick="openModal('signup-modal')">Sign Up</a></li>
+          <li><a onclick="openModal('auth-modal')">Login / Sign Up</a></li>
         </ul>
       </nav>
     </header>
@@ -89,12 +89,12 @@ Upload to GitHub Pages for free hosting.
       <h2>Our Products and Services</h2>
       <div class="product-grid">
         <div class="product-card">
-          <img src="images.jpeg" alt="Product 1" />
+          <img src="optimized-product1.jpg" alt="Product 1" />
           <h3>Product 1</h3>
           <p>High-quality item that meets your needs.</p>
         </div>
         <div class="product-card">
-          <img src="pexels-nathalia-djaleska-2148956646-30358745.jpg" alt="Product 2" />
+          <img src="optimized-product2.jpg" alt="Product 2" />
           <h3>Product 2</h3>
           <p>Top-rated service trusted by thousands.</p>
         </div>
@@ -123,6 +123,37 @@ Upload to GitHub Pages for free hosting.
       <p>&copy; 2025 Your Company. All rights reserved.</p>
     </footer>
 
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('auth-modal')">&times;</span>
+        <h2>Login / Sign Up</h2>
+        <form id="auth-form">
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="email" id="email" placeholder="Email" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="user-icon" onclick="openProfile()">
+      <img src="user-icon.png" alt="User Profile" />
+    </div>
+
+    <div id="user-profile" class="profile-modal">
+      <div class="profile-content">
+        <span class="close" onclick="closeProfile()">&times;</span>
+        <h2>User Profile</h2>
+        <p id="profile-username">Username: Guest</p>
+        <p id="profile-email">Email: Not Logged In</p>
+      </div>
+    </div>
+
     <script>
       function showSection(sectionId) {
         document
@@ -130,28 +161,58 @@ Upload to GitHub Pages for free hosting.
           .forEach((section) => section.classList.remove("active"));
         document.getElementById(sectionId).classList.add("active");
       }
+
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      function openProfile() {
+        document.getElementById("user-profile").style.display = "block";
+      }
+
+      function closeProfile() {
+        document.getElementById("user-profile").style.display = "none";
+      }
+
+      document
+        .getElementById("auth-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          document.getElementById("profile-username").innerText =
+            "Username: " + username;
+          document.getElementById("profile-email").innerText =
+            "Email: " + email;
+          closeModal("auth-modal");
+        });
     </script>
   </body>
 </html>
+
 ```
 ```css
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-/* Navigation Bar */
-.navbar {
-  display: flex;
-  justify-content: center;
+header {
   background-color: #333;
   padding: 10px 0;
+}
+
+.navbar {
   list-style: none;
-  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar li {
@@ -161,84 +222,84 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
-  transition: background 0.3s ease;
   cursor: pointer;
 }
 
-.navbar a:hover {
-  background: #555;
-  border-radius: 5px;
-}
-
-/* Sections */
 .section {
   display: none;
-  padding: 20px;
+  padding: 50px;
 }
 
 .section.active {
   display: block;
 }
 
-/* CTA Button */
 .cta-button {
-  padding: 12px 24px;
-  background-color: #28a745;
+  background-color: #008cba;
   color: white;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.cta-button:hover {
-  background-color: #218838;
-}
-
-/* Product Grid */
 .product-grid {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  padding: 20px;
 }
 
 .product-card {
-  background: white;
-  border-radius: 10px;
+  border: 1px solid #ddd;
   padding: 15px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.product-card:hover {
-  transform: scale(1.05);
+  width: 200px;
 }
 
 .product-card img {
-  width: 100px;
-  height: auto;
+  width: 100%;
 }
 
-/* Footer */
 footer {
-  text-align: center;
-  padding: 15px;
   background-color: #333;
   color: white;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 .socials a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.socials a:hover {
-  color: #ddd;
+.modal,
+.profile-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
 }
+
+.close {
+  cursor: pointer;
+  float: right;
+}
+
+.user-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.user-icon img {
+  width: 50px;
+}
+
 ```
 ## OUTPUT
 ## HOME
@@ -249,6 +310,14 @@ footer {
 ![image](https://github.com/user-attachments/assets/2f85ea5a-2a55-4291-9da0-d1f5b9dad338)
 ## CONTACT US
 ![image](https://github.com/user-attachments/assets/88e70091-cbac-4ccc-91fc-bf37a86a991f)
+## SOCIAL MEDIA
+![image](https://github.com/user-attachments/assets/5853f829-f415-42e4-839e-621cae7fbdfd)
+## LOGIN/SIGNUP
+![image](https://github.com/user-attachments/assets/cec4da79-daa8-4d01-9fec-c80c576f1a6f)
+## USER DETAILS
+![image](https://github.com/user-attachments/assets/44ad262f-f907-4191-b9b3-d73ff1a3a6b8)
+
+
 
 
 
