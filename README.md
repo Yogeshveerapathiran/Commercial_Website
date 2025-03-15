@@ -244,7 +244,7 @@ footer {
 ## HOME
 ![image](https://github.com/user-attachments/assets/607bc86e-63c3-4a2b-be17-9caff9f13957)
 ## PROUDUCTS
-![image](https://github.com/user-attachments/assets/a5e2b56c-f8ab-4ca6-ac89-7a7139b0cbf7)
+![image](https://github.com/user-attachments/assets/18858c75-e5cb-4bff-b2e7-c43b80e06d98)
 ## ABOUT US
 ![image](https://github.com/user-attachments/assets/2f85ea5a-2a55-4291-9da0-d1f5b9dad338)
 ## CONTACT US
