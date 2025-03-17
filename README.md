@@ -52,24 +52,25 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
-```index
+#home.html
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Commercial Website</title>
   </head>
   <body>
     <header>
       <nav>
         <ul class="navbar">
-          <li><a onclick="showSection('home')">Home</a></li>
-          <li><a onclick="showSection('products')">Products</a></li>
-          <li><a onclick="showSection('about')">About Us</a></li>
-          <li><a onclick="showSection('contact')">Contact</a></li>
-          <li><a onclick="openModal('auth-modal')">Login / Sign Up</a></li>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="sign.html">Sign Up</a></li>
         </ul>
       </nav>
     </header>
@@ -84,36 +85,10 @@ Upload to GitHub Pages for free hosting.
         Shop Now
       </button>
     </section>
-
-    <section id="products" class="section">
-      <h2>Our Products and Services</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="optimized-product1.jpg" alt="Product 1" />
-          <h3>Product 1</h3>
-          <p>High-quality item that meets your needs.</p>
-        </div>
-        <div class="product-card">
-          <img src="optimized-product2.jpg" alt="Product 2" />
-          <h3>Product 2</h3>
-          <p>Top-rated service trusted by thousands.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <h2>About Us</h2>
-      <p>
-        We are committed to delivering the best products with outstanding
-        customer service.
-      </p>
-    </section>
-
     <section id="contact" class="section">
       <h2>Contact Us</h2>
       <p>Email: support@yourcompany.com | Phone: +123-456-7890</p>
     </section>
-
     <footer>
       <div class="socials">
         <a href="https://facebook.com" target="_blank">Facebook</a>
@@ -122,97 +97,182 @@ Upload to GitHub Pages for free hosting.
       </div>
       <p>&copy; 2025 Your Company. All rights reserved.</p>
     </footer>
+  </body>
+</html>
 
-    <div id="auth-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('auth-modal')">&times;</span>
-        <h2>Login / Sign Up</h2>
-        <form id="auth-form">
-          <input type="text" id="username" placeholder="Username" required />
-          <input type="email" id="email" placeholder="Email" required />
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
+
+```
+product.html
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="navbar">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="sign.html">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    
+      <h2>Our Products and Services</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images.jpeg" alt="Product 1" />
+          <h3>Product 1</h3>
+          <p>High-quality item that meets your needs.</p>
+        </div>
+        <div class="product-card">
+          <img
+            src="pexels-nathalia-djaleska-2148956646-30358745.jpg"
+            alt="Product 2"
           />
-          <button type="submit">Submit</button>
-        </form>
+          <h3>Product 2</h3>
+          <p>Top-rated service trusted by thousands.</p>
+        </div>
       </div>
-    </div>
-
-    <div class="user-icon" onclick="openProfile()">
-      <img src="user-icon.png" alt="User Profile" />
-    </div>
-
-    <div id="user-profile" class="profile-modal">
-      <div class="profile-content">
-        <span class="close" onclick="closeProfile()">&times;</span>
-        <h2>User Profile</h2>
-        <p id="profile-username">Username: Guest</p>
-        <p id="profile-email">Email: Not Logged In</p>
+    </section>
+    <section id="contact" class="section">
+      <h2>Contact Us</h2>
+      <p>Email: support@yourcompany.com | Phone: +123-456-7890</p>
+    </section>
+    <footer>
+      <div class="socials">
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
       </div>
-    </div>
-
-    <script>
-      function showSection(sectionId) {
-        document
-          .querySelectorAll(".section")
-          .forEach((section) => section.classList.remove("active"));
-        document.getElementById(sectionId).classList.add("active");
-      }
-
-      function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-      }
-
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-
-      function openProfile() {
-        document.getElementById("user-profile").style.display = "block";
-      }
-
-      function closeProfile() {
-        document.getElementById("user-profile").style.display = "none";
-      }
-
-      document
-        .getElementById("auth-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          const username = document.getElementById("username").value;
-          const email = document.getElementById("email").value;
-          document.getElementById("profile-username").innerText =
-            "Username: " + username;
-          document.getElementById("profile-email").innerText =
-            "Email: " + email;
-          closeModal("auth-modal");
-        });
-    </script>
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
   </body>
 </html>
 
 ```
-```css
+#about.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <nav>
+          <ul class="navbar">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sign.html">Sign Up</a></li>
+          </ul>
+        </nav>
+      </header>
+      <h2>About Us</h2>
+      <p>
+        We are committed to delivering the best products with outstanding
+        customer service.
+      </p>
+    </section>
+   
+    <section id="contact" class="section">
+      <h2>Contact Us</h2>
+      <p>Email: support@yourcompany.com | Phone: +123-456-7890</p>
+    </section>
+    
+    <footer>
+        <div class="socials">
+          <a href="https://facebook.com" target="_blank">Facebook</a>
+          <a href="https://twitter.com" target="_blank">Twitter</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+      </footer>
+    
+    
+      <section id="about" class="section">
+        
+</body>
+</html>
+```
+#contact.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <nav>
+          <ul class="navbar">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sign.html">Sign Up</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+        <h2>Contact Us</h2>
+        <p>Email: support@yourcompany.com | Phone: +123-456-7890</p>
+        <footer>
+            <div class="socials">
+              <a href="https://facebook.com" target="_blank">Facebook</a>
+              <a href="https://twitter.com" target="_blank">Twitter</a>
+              <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+            <p>&copy; 2025 Your Company. All rights reserved.</p>
+          </footer>
+      
+</body>
+</html>
+```
+#css
+```
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}
 body {
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-header {
-  background-color: #333;
-  padding: 10px 0;
-}
-
+/* Navigation Bar */
 .navbar {
-  list-style: none;
-  padding: 0;
   display: flex;
   justify-content: center;
+  background-color: #333;
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
 }
 
 .navbar li {
@@ -222,100 +282,110 @@ header {
 .navbar a {
   color: white;
   text-decoration: none;
+  padding: 10px 20px;
+  transition: background 0.3s ease;
   cursor: pointer;
 }
 
+.navbar a:hover {
+  background: #555;
+  border-radius: 5px;
+}
+
+/* Sections */
 .section {
   display: none;
-  padding: 50px;
+  padding: 20px;
 }
 
 .section.active {
   display: block;
 }
 
+
 .cta-button {
-  background-color: #008cba;
+  padding: 12px 24px;
+  background-color: #28a745;
   color: white;
-  padding: 10px 20px;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.cta-button:hover {
+  background-color: #218838;
+}
+
+/* Product Grid */
 .product-grid {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .product-card {
-  border: 1px solid #ddd;
+  background: white;
+  border-radius: 10px;
   padding: 15px;
-  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
 }
 
 .product-card img {
-  width: 100%;
+  width: 100px;
+  height: auto;
 }
 
+
 footer {
+
+  text-align: center;
+  padding: 15px;
   background-color: #333;
   color: white;
-  padding: 10px;
-  margin-top: 20px;
+  
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #333;
+  color: white;
+  margin-top: auto; 
 }
 
 .socials a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
-.modal,
-.profile-modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border: 1px solid #ddd;
+.socials a:hover {
+  color: #ddd;
 }
 
-.close {
-  cursor: pointer;
-  float: right;
-}
-
-.user-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.user-icon img {
-  width: 50px;
 }
 
 ```
 ## OUTPUT
 ## HOME
-![image](https://github.com/user-attachments/assets/607bc86e-63c3-4a2b-be17-9caff9f13957)
+![image](https://github.com/user-attachments/assets/7ad2648a-a30d-471a-860b-182fe935c6df)
+
 ## PROUDUCTS
-![image](https://github.com/user-attachments/assets/18858c75-e5cb-4bff-b2e7-c43b80e06d98)
+![image](https://github.com/user-attachments/assets/6fc9b466-f2f2-41fc-81c5-593c97de04e2)
+
 ## ABOUT US
-![image](https://github.com/user-attachments/assets/2f85ea5a-2a55-4291-9da0-d1f5b9dad338)
+![image](https://github.com/user-attachments/assets/06fe03e7-dda0-4027-9e5e-5c92961bd61a)
+
 ## CONTACT US
-![image](https://github.com/user-attachments/assets/88e70091-cbac-4ccc-91fc-bf37a86a991f)
-## SOCIAL MEDIA
-![image](https://github.com/user-attachments/assets/5853f829-f415-42e4-839e-621cae7fbdfd)
-## LOGIN/SIGNUP
-![image](https://github.com/user-attachments/assets/cec4da79-daa8-4d01-9fec-c80c576f1a6f)
-## USER DETAILS
-![image](https://github.com/user-attachments/assets/44ad262f-f907-4191-b9b3-d73ff1a3a6b8)
+![image](https://github.com/user-attachments/assets/703c5d15-07b8-4ac9-89fe-7dfa5d06d4fc)
+
 
 
 
