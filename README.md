@@ -52,8 +52,8 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
-#home.html
-```
+
+```home.html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -102,8 +102,8 @@ Upload to GitHub Pages for free hosting.
 
 
 ```
-product.html
-```
+
+```product.html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -159,8 +159,8 @@ product.html
 </html>
 
 ```
-#about.html
-```
+
+```about.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,8 +208,8 @@ product.html
 </body>
 </html>
 ```
-#contact.html
-```
+
+```contact.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -245,8 +245,8 @@ product.html
 </body>
 </html>
 ```
-#css
-```
+
+```style.css
 html, body {
   height: 100%;
   margin: 0;
